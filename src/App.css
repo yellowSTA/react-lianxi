@@ -3,13 +3,13 @@ body {
     padding: 0;
 }
 * {box-sizing: border-box;}
-.g-container {
+.g-page{
     display: flex;
 }
 .sideBar {
     width: 250px;
     height: 100vh;
-    background: red;
+    background-color: red;
 }
 .sideBar .logo {
     height: 100px;
@@ -19,7 +19,11 @@ body {
     font-size: 30px;
     background-color: #022a50;
 }
-.g-content {
+.g-wrap {
     flex: 1;
-    background: #f5f5f5;
+    background-color: #f5f5f5;
+}
+.g-container {
+    margin: 20px 30px;
+    background-color: #fff;
 }

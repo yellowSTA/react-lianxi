@@ -23,7 +23,7 @@ export default class SideBar extends Component {
         return data.map(item => {
             if(item.children) {
                 return (
-                    <SubMenu key={item.key} title={ item.title }>{ this.createMenu(item.children) }</SubMenu>
+                    <SubMenu key={item.key} title={ <span>{item.title}</span> }>{ this.createMenu(item.children) }</SubMenu>
                 )
             }
             return <Menu.Item key={item.key}>{item.title}</Menu.Item>

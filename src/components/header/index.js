@@ -29,7 +29,7 @@ export default class Header extends Component {
                     <span className="loginOut">退出</span>
                 </div>
                 <div className="header-bottom">
-                    <span>首页</span>
+                    <span className="name">首页</span>
                     <div>
                         <span className="time">{ currentTime }</span>
                         <span>晴天</span>

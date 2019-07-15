@@ -15,6 +15,22 @@
         padding: 0 30px;
         height: 40px;
         line-height: 40px;
+        .name {
+            display: block;
+            position: relative;
+            width: 200px;
+            text-align: center;
+            &:after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 40px;
+                margin-left: -12px;
+                border-top: 9px solid #fff;
+                border-left: 12px solid transparent;
+                border-right: 12px solid transparent;
+            }
+        }
     }
     .time {
         margin-right: 20px;
