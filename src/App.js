@@ -1,23 +1,31 @@
-import React from 'react';
-import SideBar from './components/SideBar'
-import Header from './components/header'
-import Footer from './components/Footer'
-import Home from './page/Home'
-import './App.css'
+import React, { Component } from 'react';
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import routes from './router';
+import './App.css';
 
-function App() {
+class App extends Component {
+  render() {
     return (
-        <div className="g-page">
-            <SideBar></SideBar>
-            <div className="g-wrap">
-                <Header/>
-                <div className="g-container">
-                    <Home/>
-                </div>
-                <Footer/>
-            </div>
-        </div>
+        <Router>
+            <Switch>
+            {
+                routes.map((item, i) => {
+                    if (item.exact) {
+                        return <Route 
+                            exact 
+                            path={item.path} 
+                            key={i} 
+                            render={ props => <item.component {...props} routes={item.children}/>}
+                        />
+                    } else {
+                        return <Route path={item.path} key={i} render={ props => (<item.component {...props}  routes={item.children}/>)}/>
+                    }
+                })
+            }
+            </Switch> 
+        </Router>
     );
+  }
 }
 
 export default App;
