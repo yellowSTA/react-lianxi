@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import NoMatch from '../nomatch';
-import './index.less'
 
-export default class Ui extends Component {
+export default class Forms extends Component {
     
     render() {
         const { routes, location } = this.props;
         return (
-            <div className="ui">
+            <div className="forms">
                 <Switch>
                     {
-                        location.pathname === '/admin/ui' 
-                        ? <Redirect to='/admin/ui/buttons'></Redirect>
+                        location.pathname === '/admin/form' 
+                        ? <Redirect to='/admin/form/login'></Redirect>
                         : routes.map((item, i) => {
                             return <Route exact path={item.path} component= {item.component} key={i}/>
                         })
