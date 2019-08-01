@@ -1,13 +1,25 @@
-import request from '../../http/request';
 import React, { Component } from 'react';
-import { Form, Spin, Button, Card, Table, Select, Modal } from 'antd';
+import { Form, Spin, Button, Card, Table, Select, Modal, message } from 'antd';
 const { Option } = Select;
+const dateFormat = require('js-dateformat').dateFormat;
 
 const columns = [
     {title:'城市ID', dataIndex: 'id'},
     {title:'城市名称', dataIndex: 'name'},
-    {title:'用车模式', dataIndex: 'mode'},
-    {title:'营运模式', dataIndex: 'op_mode'},
+    {
+        title:'用车模式', 
+        dataIndex: 'mode',
+        render(mode) {
+            return mode == 1 ? '指定停车点模式' : '禁停区模式'
+        }
+    },
+    {
+        title:'营运模式', 
+        dataIndex: 'op_mode',
+        render(mode) {
+            return mode == 1 ? '自营' : '加盟'
+        }
+    },
     {title:'授权加盟商', dataIndex: 'franchisee_name'},
     {
         title:'城市管理员',
@@ -19,7 +31,13 @@ const columns = [
         }
     },
     {title:'城市开通时间', dataIndex: 'open_time'},
-    {title:'操作时间', dataIndex: 'update_time'},
+    {
+        title:'操作时间', 
+        dataIndex: 'update_time',
+        render(time) {
+            return dateFormat(new Date(time), 'yyyy-mm-dd HH:MM:ss')
+        }
+    },
     {title:'操作人', dataIndex: 'sys_user_name'}
 ]
 
@@ -28,7 +46,7 @@ export default class City extends Component {
         super(props);
         this.state = {
             list: [], //table
-            loading: false, //是否显示加载数据
+            loading: true, //是否显示加载数据
             total: 0, //总条数
             visibleModal: false //开通城市弹窗
         }
@@ -49,7 +67,16 @@ export default class City extends Component {
         })
     }
     handleCitySubmit = () => {
-        console.log(this.cityForm.props.form.getFieldsValue());
+        let formData = this.cityForm.props.form.getFieldsValue();
+        global.$get('onOpenCity',formData).then(res => {
+            if(res.code == 0) {
+                message.success('开通成功');
+                this.initData();
+                this.setState({
+                    visibleModal: false
+                })
+            }
+        })
     }
     //关闭弹窗
     modalCanel = () => {
@@ -60,16 +87,18 @@ export default class City extends Component {
 
     //初始化数据
     initData = () => {
-        request.get('/open_city',{params:this.pages}).then(res => {
-            const list = res.result.item_list;
-            this.setState({
-                list: list.map((item, index) => {
-                    item.key = index;
-                    return item;
-                }),
-                loading: false,
-                total: res.result.total_count
-            })
+        global.$get('getOpenCity',this.pages).then(res => {
+            if(res.code != 500) {
+                const list = res.result.item_list;
+                this.setState({
+                    list: list.map((item, index) => {
+                        item.key = index;
+                        return item;
+                    }),
+                    loading: false,
+                    total: res.result.total_count
+                })
+            }
         })
     }
 
@@ -88,7 +117,7 @@ export default class City extends Component {
                 <Card>
                     <SearchForm></SearchForm>
                 </Card>
-                <Card>
+                <Card style={{marginTop: 20, borderBottom: 'none'}}>
                     <Button type="primary" onClick={this.handleOpenCity}>开通城市</Button>
                 </Card>
                 <Modal 

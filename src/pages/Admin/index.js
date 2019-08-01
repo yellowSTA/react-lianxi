@@ -16,8 +16,8 @@ export default class Admin extends Component {
                     <div className="g-container">
                         <Switch>
                             {
-                                location.pathname === '/admin'
-                                ? <Redirect to='/admin/ui/buttons'></Redirect>
+                                location.pathname === '/'
+                                ? <Redirect to='/admin/home'></Redirect>
                                 : routes.map((item, i) => {
                                     return <Route path={item.path} key={i} render={ props => (<item.component {...props}  routes={item.children}/>)}/>
                                 })

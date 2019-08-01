@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import routes from './router';
 import './App.css';
+import './config';
 
 class App extends Component {
   render() {

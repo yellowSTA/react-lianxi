@@ -6,9 +6,10 @@ const Home = Loadable({loader: () => import('../pages/Home'), loading : DelayLoa
 const Button = Loadable({loader: () => import('../pages/ui/button'), loading : DelayLoading})
 const Ui = Loadable({loader: () => import('../pages/ui/index'), loading : DelayLoading})
 const Modals = Loadable({loader: () => import('../pages/ui/modals'), loading : DelayLoading})
-const City = Loadable({loader: () => import('../pages/city'), loading : DelayLoading})
 const Forms = Loadable({loader: () => import('../pages/form/index'), loading : DelayLoading})
 const FormLogin = Loadable({loader: () => import('../pages/form/login'), loading : DelayLoading})
+const City = Loadable({loader: () => import('../pages/city'), loading : DelayLoading})
+const Order = Loadable({loader: () => import('../pages/order'), loading : DelayLoading})
 
 const routes = [
     {
@@ -49,6 +50,10 @@ const routes = [
             {
                 path: '/admin/city',
                 component: City
+            },
+            {
+                path: '/admin/order',
+                component: Order
             }
         ]
     }
