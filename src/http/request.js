@@ -11,7 +11,8 @@ server.interceptors.request.use(
         return config;
     },
     error => {
-        message.info(error);
+        // message.info(error);
+        console.log(error);
         return Promise.reject(error);
     }
 )
@@ -21,7 +22,11 @@ server.interceptors.response.use(
         return response.data;
     },
     error => {
-        message.info(error);
+        if(error.toString().indexOf('timeout') != -1) {
+            message.info('请求超时');
+        } else {
+            message.info('网络不好');
+        }
         return Promise.reject(error);
     }
 )

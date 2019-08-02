@@ -10,10 +10,11 @@ const Forms = Loadable({loader: () => import('../pages/form/index'), loading : D
 const FormLogin = Loadable({loader: () => import('../pages/form/login'), loading : DelayLoading})
 const City = Loadable({loader: () => import('../pages/city'), loading : DelayLoading})
 const Order = Loadable({loader: () => import('../pages/order'), loading : DelayLoading})
+const OrderDetail = Loadable({loader: () => import('../pages/order/detail'), loading : DelayLoading})
 
 const routes = [
     {
-        path: '/',
+        path: '/admin',
         component: Admin,
         children: [
             {
@@ -56,7 +57,11 @@ const routes = [
                 component: Order
             }
         ]
-    }
+    },
+    {
+        path: '/order-detail/:orderId',
+        component: OrderDetail
+    },
 ]
 
 export default routes;

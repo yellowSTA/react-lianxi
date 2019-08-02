@@ -32,6 +32,11 @@ body {
     border: 1px solid #e8e8e8;
     background: #fff;
 }
+ul,li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 /*字号*/
 .font_0{font-size: 0;}
 .font_12{font-size: 12px;}
