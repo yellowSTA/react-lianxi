@@ -20,6 +20,10 @@ export default class Header extends Component {
         },1000)
     }
 
+    componentWillUnmount() {
+        clearInterval(this.timer)
+    }
+
     render() {
         const { currentTime, userName } = this.state;
         return (

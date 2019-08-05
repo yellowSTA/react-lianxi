@@ -48,10 +48,7 @@ export default class Order extends Component {
     }
     //查看详情
     lookDetail = (row) => {
-        this.setState({
-            visible: true,
-            itemInfo: row
-        })
+        window.open(window.location.protocol+window.location.host + '/#/order-detail/' + row.id, '_blank')
     }
 
     //获取结束订单详情
@@ -155,8 +152,8 @@ export default class Order extends Component {
                     onCancel={() => this.setState({endVisible: false})}>
                     <div>
                         <Row>
-                            <Col span="4">车辆编号：</Col>
-                            <Col span="20">{ebikeInfo.bike_sn}</Col>
+                            <Col span={4}>车辆编号：</Col>
+                            <Col span={20}>{ebikeInfo.bike_sn}</Col>
                         </Row>
                         <Row>
                             <Col span={4}>剩余电量：</Col>
