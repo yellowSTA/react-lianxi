@@ -23,7 +23,16 @@ global.$get = function(url, params = {}) {
 
 global.$post = function(url, data = {}) {
     if(api[url]) {
-        return axios.get(api[url],data)
+        return axios.post(api[url],data)
+    } else {
+        message.info(`api/index.js中没有${url}这个健值`,10)
+        return Promise.resolve({code: 500,msg:'没有找到相应的api'})
+    }
+}
+
+global.$delete = function(url, data = {}) {
+    if(api[url]) {
+        return axios.delete(api[url],{params: data})
     } else {
         message.info(`api/index.js中没有${url}这个健值`,10)
         return Promise.resolve({code: 500,msg:'没有找到相应的api'})

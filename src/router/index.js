@@ -11,6 +11,7 @@ const FormLogin = Loadable({loader: () => import('../pages/form/login'), loading
 const City = Loadable({loader: () => import('../pages/city'), loading : DelayLoading})
 const Order = Loadable({loader: () => import('../pages/order'), loading : DelayLoading})
 const OrderDetail = Loadable({loader: () => import('../pages/order/detail'), loading : DelayLoading})
+const User = Loadable({loader: () => import('../pages/user'), loading : DelayLoading})
 
 const routes = [
     {
@@ -55,13 +56,17 @@ const routes = [
             {
                 path: '/admin/order',
                 component: Order
+            },
+            {
+                path: '/admin/user',
+                component: User
             }
         ]
     },
     {
         path: '/order-detail/:orderId',
         component: OrderDetail
-    },
+    }
 ]
 
 export default routes;
