@@ -12,6 +12,9 @@ const City = Loadable({loader: () => import('../pages/city'), loading : DelayLoa
 const Order = Loadable({loader: () => import('../pages/order'), loading : DelayLoading})
 const OrderDetail = Loadable({loader: () => import('../pages/order/detail'), loading : DelayLoading})
 const User = Loadable({loader: () => import('../pages/user'), loading : DelayLoading})
+const BikeMap = Loadable({loader: () => import('../pages/map/bikeMap'), loading : DelayLoading})
+const Charts = Loadable({loader: () => import('../pages/charts/index'), loading : DelayLoading})
+const Bar = Loadable({loader: () => import('../pages/charts/bar'), loading : DelayLoading})
 
 const routes = [
     {
@@ -60,6 +63,20 @@ const routes = [
             {
                 path: '/admin/user',
                 component: User
+            },
+            {
+                path: '/admin/bikeMap',
+                component: BikeMap
+            },
+            {
+                path: '/admin/charts',
+                component: Charts,
+                children: [
+                    {
+                        path: '/admin/charts/bar',
+                        component: Bar
+                    }
+                ]
             }
         ]
     },

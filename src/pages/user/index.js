@@ -195,7 +195,7 @@ export default class User extends Component {
     }
     //删除员工
     delStaff = (id) => {
-        global.$delete('userDel',{id}).then(res => {
+        global.$get('userDel',{id}).then(res => {
             if(res.code == 0) {
                 message.success('删除成功');
             }

@@ -8,4 +8,5 @@ export default {
     userAdd: '/user/add', //添加用户
     userEdit: '/user/edit', //编辑用户
     userDel: '/user/delete', //删除用户
+    bikeList: '/map/bike_list' //车辆地图
 }
