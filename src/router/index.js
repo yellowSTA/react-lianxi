@@ -15,6 +15,9 @@ const User = Loadable({loader: () => import('../pages/user'), loading : DelayLoa
 const BikeMap = Loadable({loader: () => import('../pages/map/bikeMap'), loading : DelayLoading})
 const Charts = Loadable({loader: () => import('../pages/charts/index'), loading : DelayLoading})
 const Bar = Loadable({loader: () => import('../pages/charts/bar'), loading : DelayLoading})
+const Pie = Loadable({loader: () => import('../pages/charts/pie'), loading : DelayLoading})
+const Line = Loadable({loader: () => import('../pages/charts/line'), loading : DelayLoading})
+const Rich = Loadable({loader: () => import('../pages/rich'), loading : DelayLoading})
 
 const routes = [
     {
@@ -75,8 +78,20 @@ const routes = [
                     {
                         path: '/admin/charts/bar',
                         component: Bar
+                    },
+                    {
+                        path: '/admin/charts/pie',
+                        component: Pie
+                    },
+                    {
+                        path: '/admin/charts/line',
+                        component: Line
                     }
                 ]
+            },
+            {
+                path: '/admin/rich',
+                component: Rich
             }
         ]
     },

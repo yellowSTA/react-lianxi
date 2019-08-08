@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import routes from './router';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './App.css';
 import './config';
 

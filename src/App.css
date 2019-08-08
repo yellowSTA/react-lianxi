@@ -37,6 +37,17 @@ ul,li{
     padding: 0;
     list-style: none;
 }
+.toolbarClassName {
+    border:none;
+    border-bottom: 1px solid #ececec;
+}
+.wrapperClassName {
+    border: 1px solid #ececec;
+}
+.editorClassName {
+    padding: 0 10px;
+    min-height: 200px;
+}
 /*字号*/
 .font_0{font-size: 0;}
 .font_12{font-size: 12px;}
