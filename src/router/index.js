@@ -18,6 +18,7 @@ const Bar = Loadable({loader: () => import('../pages/charts/bar'), loading : Del
 const Pie = Loadable({loader: () => import('../pages/charts/pie'), loading : DelayLoading})
 const Line = Loadable({loader: () => import('../pages/charts/line'), loading : DelayLoading})
 const Rich = Loadable({loader: () => import('../pages/rich'), loading : DelayLoading})
+const Permission = Loadable({loader: () => import('../pages/permission'), loading : DelayLoading})
 
 const routes = [
     {
@@ -92,6 +93,10 @@ const routes = [
             {
                 path: '/admin/rich',
                 component: Rich
+            },
+            {
+                path: '/admin/permission',
+                component: Permission
             }
         ]
     },
