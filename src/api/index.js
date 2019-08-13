@@ -10,4 +10,6 @@ export default {
     userDel: '/user/delete', //删除用户
     bikeList: '/map/bike_list', //车辆地图
     roleList: '/role/list', //用户权限
+    permEdit: '/permission/edit', //编辑用户权限
+    roleUserList: '/role/user_list', //角色用户列表
 }

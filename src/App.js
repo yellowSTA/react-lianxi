@@ -10,21 +10,21 @@ class App extends Component {
         return (
             <Router>
                 <Switch>
-                {
-                    routes.map((item, i) => {
-                        if (item.exact) {
-                            return <Route 
-                                exact 
-                                path={item.path} 
-                                key={i} 
-                                render={ props => <item.component {...props} routes={item.children}/>}
-                            />
-                        } else {
-                            return <Route path={item.path} key={i} render={ props => (<item.component {...props}  routes={item.children}/>)}/>
-                        }
-                    })
-                }
-                <Redirect to='/admin/home'></Redirect>
+                    {
+                        routes.map((item, i) => {
+                            if (item.exact) {
+                                return <Route 
+                                    exact 
+                                    path={item.path} 
+                                    key={i} 
+                                    render={ props => <item.component {...props} routes={item.children}/>}
+                                />
+                            } else {
+                                return <Route path={item.path} key={i} render={ props => (<item.component {...props}  routes={item.children}/>)}/>
+                            }
+                        })
+                    }
+                    <Redirect to='/admin/home'></Redirect>
                 </Switch> 
             </Router>
         );
