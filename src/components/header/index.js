@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './index.less';
 const dateFormat = require('js-dateformat').dateFormat;
 
-export default class Header extends Component {
+class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -33,7 +34,7 @@ export default class Header extends Component {
                     <span className="loginOut">退出</span>
                 </div>
                 <div className="header-bottom">
-                    <span className="name">首页</span>
+                    <span className="name">{ this.props.menuName }</span>
                     <div>
                         <span className="time">{ currentTime }</span>
                         <span>晴天</span>
@@ -43,3 +44,11 @@ export default class Header extends Component {
         )
     }
 }
+
+const mapState = state => {
+    return {
+        menuName: state.menuName
+    }
+}
+
+export default connect(mapState)(Header);

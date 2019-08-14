@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import { Menu } from 'antd';
 import menuList from '../../assets/js/menuConfig.js';
+import { connect } from 'react-redux';
+import { switchMenu } from '../../redux/actions';
 import { Link } from 'react-router-dom';
 const { SubMenu } = Menu;
 
-export default class SideBar extends Component {
+class SideBar extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            currentKey: ''
+        }
     }
     componentWillMount() {
         const list = this.createMenu(menuList);
+        let currentKey = window.location.hash.replace(/#|\?.*$/,'');
         this.setState({
-            list
+            list,
+            currentKey
         })
     }
     // 生成菜单
@@ -23,7 +29,15 @@ export default class SideBar extends Component {
                     <SubMenu key={item.key} title={ <span>{item.title}</span> }>{ this.createMenu(item.children) }</SubMenu>
                 )
             }
-            return <Menu.Item key={item.key}><Link to={item.key}>{item.title}</Link></Menu.Item>
+            return <Menu.Item key={item.key} title={item.title} onClick={this.handleClick}><Link to={item.key}>{item.title}</Link></Menu.Item>
+        })
+    }
+    //菜单点击
+    handleClick = ({item, key}) => {
+        const { dispatch } = this.props;
+        dispatch(switchMenu(item.props.title))
+        this.setState({
+            currentKey: key
         })
     }
 
@@ -33,10 +47,16 @@ export default class SideBar extends Component {
                 <div className="logo">
                     <span>这里是logo</span>
                 </div>
-                <Menu style={{ width: "100%", height: "calc(100% - 100px)" }} mode="vertical" theme="dark">
+                <Menu 
+                    style={{ width: "100%", height: "calc(100% - 100px)" }} 
+                    mode="vertical" 
+                    theme="dark"
+                    selectedKeys={[this.state.currentKey]}>
                     { this.state.list }
                 </Menu>
             </div>
         )
     };
 }
+
+export default connect()(SideBar)
